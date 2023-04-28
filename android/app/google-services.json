@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "103408610174",
+    "project_id": "contacts-1536",
+    "storage_bucket": "contacts-1536.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103408610174:android:36fc1a0d81f10adbe5212f",
+        "android_client_info": {
+          "package_name": "com.example.contacts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "103408610174-hpeukn3p3ope81mksjk83bkupk012gc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsaD0yz42AhlEI3xheH_cRage0FqA0IvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "103408610174-hpeukn3p3ope81mksjk83bkupk012gc0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "103408610174-rf6bdevpdud5t0j6tn13t9uekeblebvv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tiffinshala"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103408610174:android:bde96637d35fc845e5212f",
+        "android_client_info": {
+          "package_name": "com.example.tiffinshala"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "103408610174-hpeukn3p3ope81mksjk83bkupk012gc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsaD0yz42AhlEI3xheH_cRage0FqA0IvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "103408610174-hpeukn3p3ope81mksjk83bkupk012gc0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "103408610174-rf6bdevpdud5t0j6tn13t9uekeblebvv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tiffinshala"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
