@@ -23,6 +23,7 @@ class _ContactScreenState extends State<ContactScreen> {
   @override
   void initState() {
     contactController.getContacts();
+    contactController.getDeviceContacts();
     firstNameController.text='';
     lastNameController.text='';
     phoneController.text='';
@@ -39,16 +40,18 @@ class _ContactScreenState extends State<ContactScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Contacts", style: TextStyle(fontSize: 30),),
-            (contactController.contactsList.length.isGreaterThan(0))?
-                Obx(() => ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    padding: EdgeInsets.only(left: 2, right: 2, bottom: 85, top: 2),
-                    itemCount: contactController.contactsList.length,
-                    itemBuilder: (context,index){
-                      return ContactTile(contactController.contactsList[index], context);
-                    }))
-            :Center(child: Icon(Icons.no_accounts_rounded, size: 100,),)
+            Obx(() => (contactController.contactsList.length.isGreaterThan(0))?
+            ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                padding: EdgeInsets.only(left: 2, right: 2, bottom: 85, top: 2),
+                itemCount: contactController.contactsList.length,
+                itemBuilder: (context,index){
+                  return ContactTile(contactController.contactsList[index], context);
+                })
+                :Center(child: Icon(Icons.no_accounts_rounded, size: 100,),))
+
+
 
           ],),
       ),
@@ -269,7 +272,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   ),
                   ElevatedButton(onPressed: () async{
                     if(formKey.currentState!.validate()){
-                      Contact contact=Contact();
+                      ContactModel contact=ContactModel();
                       contact.firstName = firstNameController.text;
                       contact.surName = lastNameController.text;
                       contact.phoneNumber = phoneController.text;

@@ -3,7 +3,7 @@ import 'package:contacts/Screens/contactDetails.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget ContactTile(Contact contactDetails, BuildContext context){
+Widget ContactTile(ContactModel contactDetails, BuildContext context){
   return ListTile(
     leading: CircleAvatar(
       radius: 20,

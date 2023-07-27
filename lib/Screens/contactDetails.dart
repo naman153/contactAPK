@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 class ContactDetails extends StatefulWidget {
-  final Contact contact;
+  final ContactModel contact;
   const ContactDetails({required this.contact, Key? key}) : super(key: key);
 
   @override
@@ -341,7 +341,7 @@ class _ContactDetailsState extends State<ContactDetails> {
                   ),
                   ElevatedButton(onPressed: () async{
                     if(formKey.currentState!.validate()){
-                      Contact contact=Contact();
+                      ContactModel contact=ContactModel();
                       contact.firstName = firstNameController.text;
                       contact.surName = lastNameController.text;
                       contact.phoneNumber = phoneController.text;

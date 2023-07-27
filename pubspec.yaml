@@ -42,6 +42,10 @@ dependencies:
   get:
   firebase_core:
   sliding_sheet:
+  permission_handler:
+  contacts_service:
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

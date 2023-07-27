@@ -1,17 +1,81 @@
-import 'dart:ui';
+import 'dart:async';
 
 import 'package:contacts/Controllers/ContactController.dart';
 import 'package:contacts/Screens/ContactsScreen.dart';
 import 'package:contacts/services/UserAuthServices.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../Controllers/permissionController.dart';
 
 TextEditingController emailId = TextEditingController();
 TextEditingController password = TextEditingController();
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver{
+  var _isResumed = false.obs;
+
+  @override
+  void initState() {
+    checkNotification();
+    super.initState();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print('Activated again ${state}');
+    if (state == AppLifecycleState.resumed) {
+      _isResumed.value = true;
+      // _isResumed.refresh();
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  checkNotification() async {
+    var settings = await permissionController.requestAllPermissions();
+    StreamSubscription<bool>? _listener;
+    if (settings == false) {
+      await showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('🔔 Permissions for contacts!'),
+          content: Text(
+            'We strongly recommend you to enable all the permissions and a better user experience!',
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () async {
+                await permissionController.requestPermission(true, null);
+                _listener = _isResumed.listen((p0) async {
+                  if (_isResumed.value) {
+                    var settings =
+                    await permissionController.requestAllPermissions();
+                    if (settings == true) {
+                      Navigator.of(context).pop();
+                    }
+                  }
+                });
+              },
+              child: Text('Open Settings'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +88,7 @@ class HomeScreen extends StatelessWidget {
             Container(
               height: MediaQuery.of(context).size.height*0.6,
               width: MediaQuery.of(context).size.width-10,
-              child: Image.asset("assets/images/contact_logo.png"),
+              child: Image.asset("assets/images/contact_logo.jpg"),
             ),
             Container(
               height: MediaQuery.of(context).size.height*0.34,

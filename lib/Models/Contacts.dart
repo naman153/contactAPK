@@ -1,13 +1,13 @@
 import 'dart:core';
 
-class Contact {
+class ContactModel {
   String? firstName;
   String? surName;
   String? phoneNumber;
   String? uid;
-  Contact();
+  ContactModel();
 
-  Contact.fromJson(Map<String, dynamic> json) {
+  ContactModel.fromJson(Map<String, dynamic> json) {
     firstName = json['name'];
     surName =
     json['name'] != null ? json['surName']:"";
